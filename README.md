@@ -257,12 +257,20 @@ description: 简明扼要地描述此技能的作用及使用时机。
 
 ## 如何贡献
 
-我们欢迎各位的贡献！请阅读我们的 [贡献指南](CONTRIBUTING.md) 了解详情：
+我们欢迎各位的贡献！请阅读我们的 [贡献指南](https://github.com/ComposioHQ/awesome-claude-skills/blob/main/CONTRIBUTING.md) 了解详情：
 
-- 如何提交新技能
-- 技能质量标准
-- Pull Request 流程
-- 行为准则
+- [如何提交新技能](https://github.com/ComposioHQ/awesome-claude-skills/blob/main/CONTRIBUTING.md#submitting-new-skills)
+- [技能质量标准](https://github.com/ComposioHQ/awesome-claude-skills/blob/main/CONTRIBUTING.md#quality-standards)
+- [Pull Request 流程](https://github.com/ComposioHQ/awesome-claude-skills/blob/main/CONTRIBUTING.md#pull-request-process)
+- [行为准则](https://github.com/ComposioHQ/awesome-claude-skills/blob/main/CONTRIBUTING.md#code-of-conduct)
+
+### 快速贡献流程
+
+1. 确保您的技能基于真实的用例。
+2. 检查现有技能中是否有重复项。
+3. 遵循技能结构模板。
+4. 在各平台上测试您的技能。
+5. 提交带有清晰文档的 Pull Request。
 
 ---
 
@@ -274,12 +282,18 @@ description: 简明扼要地描述此技能的作用及使用时机。
 - [技能用户指南](https://support.claude.com/en/articles/12512180-using-skills-in-claude) - 如何使用技能
 - [创建自定义技能](https://support.claude.com/en/articles/12512198-creating-custom-skills) - 技能开发指南
 - [Skills API 文档](https://docs.claude.com/en/api/skills-guide) - API 集成指南
+- [Agent Skills 博客文章](https://anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills) - 工程深度解析
 
 ### 社区资源
 
 - [Anthropic Skills 仓库](https://github.com/anthropics/skills) - 官方示例技能
 - [Claude 社区](https://community.anthropic.com) - 与其他用户讨论技能
 - [技能市场](https://claude.ai/marketplace) - 发现并分享技能
+
+### 灵感与案例
+
+- [Lenny's Newsletter](https://www.lennysnewsletter.com/p/everyone-should-be-using-claude-code) - 使用 Claude Code 的 50 种方式
+- [Notion Skills](https://www.notion.so/notiondevs/Notion-Skills-for-Claude-28da4445d27180c7af1df7d8615723d0) - Notion 集成技能
 
 ---
 
