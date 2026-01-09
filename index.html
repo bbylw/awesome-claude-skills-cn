@@ -1,458 +1,919 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Awesome Claude Skills | Obsidian Emerald</title>
-    <meta name="description" content="精选实用的 Claude 技能适配器，采用 Obsidian Emerald 极致设计，同步最新 README 内容。">
-    <link rel="stylesheet" href="index.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@800&display=swap"
-        rel="stylesheet">
+    <title>Claude Skills 精选资源</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg-primary: #0d0d0d;
+            --bg-secondary: #1a1a1a;
+            --bg-tertiary: #252525;
+            --bg-card: #1e1e1e;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-muted: #666666;
+            --accent: #c9a962;
+            --accent-hover: #e0c078;
+            --accent-glow: rgba(201, 169, 98, 0.3);
+            --border: #333333;
+            --border-light: #404040;
+        }
+        
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        header {
+            background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+            padding: 80px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, var(--accent-glow) 0%, transparent 50%);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+        
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        header p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        nav {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            color: var(--text-primary);
+            background: var(--bg-tertiary);
+        }
+        
+        main {
+            padding: 60px 0;
+        }
+        
+        .section {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border);
+        }
+        
+        .section h2 {
+            color: var(--text-primary);
+            font-size: 1.75rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+        }
+        
+        .section h3 {
+            color: var(--accent);
+            font-size: 1.25rem;
+            margin: 35px 0 20px;
+            font-weight: 600;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .skill-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-glow);
+        }
+        
+        .skill-card h4 {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .skill-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+        
+        .skill-card a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+            display: inline-block;
+        }
+        
+        .skill-card a:hover {
+            color: var(--accent-hover);
+        }
+        
+        .author {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
+        
+        .author a {
+            color: var(--accent);
+        }
+        
+        .toc {
+            background: var(--bg-tertiary);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 35px;
+        }
+        
+        .toc h3 {
+            margin-bottom: 18px;
+            font-size: 1.1rem;
+        }
+        
+        .toc ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        
+        .toc li {
+            margin-bottom: 0;
+        }
+        
+        .toc a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            background: var(--bg-card);
+            display: block;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+        
+        .toc a:hover {
+            color: var(--accent);
+            background: var(--bg-secondary);
+        }
+        
+        code {
+            background: var(--bg-tertiary);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 0.9em;
+            color: var(--accent);
+        }
+        
+        pre {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            padding: 24px;
+            border-radius: 12px;
+            overflow-x: auto;
+            margin: 18px 0;
+            border: 1px solid var(--border);
+        }
+        
+        pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+            font-size: 0.9rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 35px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 14px 32px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: #000;
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--accent-glow);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--border-light);
+            color: var(--text-primary);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: 50px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        footer p {
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        ol {
+            padding-left: 24px;
+        }
+        
+        ol li {
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+        }
+        
+        ul {
+            padding-left: 24px;
+        }
+        
+        ul li {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            header p {
+                font-size: 1.1rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .toc ul {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section {
+                padding: 25px;
+            }
+        }
+    </style>
 </head>
-
 <body>
-    <header id="header">
-        <a href="#" class="logo">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polygon points="12 2 2 7 12 12 22 7 12 2" />
-                <polyline points="2 17 12 22 22 17" />
-                <polyline points="2 12 12 17 22 12" />
-            </svg>
-            <span>CLAUDE SKILLS</span>
-        </a>
-        <nav>
-            <ul>
-                <li><a href="#doc">文档</a></li>
-                <li><a href="#dev">开发</a></li>
-                <li><a href="#data">数据</a></li>
-                <li><a href="#biz">商业</a></li>
-                <li><a href="#writing">沟通</a></li>
-                <li><a href="#creative">创意</a></li>
-                <li><a href="#prod">效率</a></li>
-                <li><a href="#collab">协作</a></li>
-                <li><a href="#sec">安全</a></li>
-                <li><a href="#guide">指南</a></li>
-            </ul>
-        </nav>
+    <header>
+        <div class="container">
+            <h1>🤖 Claude Skills 精选资源</h1>
+            <p>精选的实用 Claude Skills 清单，涵盖文档处理、开发工具、数据分析、商业营销等多个领域，帮助您在 Claude.ai、Claude Code 和 Claude API 中提升生产力。</p>
+            <div class="cta-buttons">
+                <a href="#skills" class="btn btn-primary">浏览技能</a>
+                <a href="#getting-started" class="btn btn-secondary">开始使用</a>
+            </div>
+        </div>
     </header>
-
-    <section class="hero">
-        <div class="hero-tag">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-            OBSIDIAN EMERALD v2.1 | SYNCHRONIZED
+    
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#what-is">什么是 Skills</a></li>
+                <li><a href="#skills">技能列表</a></li>
+                <li><a href="#getting-started">开始使用</a></li>
+                <li><a href="#create">创建技能</a></li>
+                <li><a href="#resources">资源</a></li>
+            </ul>
         </div>
-        <h1>Everything Claude Can Do</h1>
-        <p>精选 50+ 个实用的 Claude 技能，涵盖从文档处理到高级安全防御的全方位自动化。一套技能，在 Claude.ai、Claude Code 与 API 间无缝流转。</p>
-    </section>
-
+    </nav>
+    
     <main class="container">
-        <!-- 文档处理 -->
-        <div class="section-header" id="doc">
-            <div class="section-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                    <polyline points="14 2 14 8 20 8" />
-                </svg>
+        <section id="what-is" class="section">
+            <h2>🤔 什么是 Claude Skills？</h2>
+            <p style="color: var(--text-secondary); font-size: 1.05rem;">Claude Skills 是可定制的工作流程，教 Claude 如何根据您的独特需求执行特定任务。Skills 使 Claude 能够在所有 Claude 平台上以可重复、标准化的方式执行任务。</p>
+        </section>
+        
+        <section id="skills" class="section">
+            <h2>📚 技能分类</h2>
+            
+            <div class="toc">
+                <h3>目录</h3>
+                <ul>
+                    <li><a href="#doc-processing">📄 文档处理</a></li>
+                    <li><a href="#dev-tools">💻 开发与代码工具</a></li>
+                    <li><a href="#data-analysis">📊 数据与分析</a></li>
+                    <li><a href="#business">💼 商业与营销</a></li>
+                    <li><a href="#communication">✍️ 沟通与写作</a></li>
+                    <li><a href="#creative">🎨 创意与媒体</a></li>
+                    <li><a href="#productivity">⚡ 生产力与组织</a></li>
+                    <li><a href="#collaboration">👥 协作与项目管理</a></li>
+                    <li><a href="#security">🔒 安全与系统</a></li>
+                </ul>
             </div>
-            <h2>文档处理</h2>
-            <p>自动化 Word、PDF 与电子书内容的深度交互。</p>
-        </div>
-        <div class="skills-grid">
-            <a href="https://github.com/anthropics/skills/tree/main/skills/docx" target="_blank" class="skill-card">
-                <h3>docx 专家 <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2.5">
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg></h3>
-                <p>深度整合 Microsoft Word 协议。在不破坏原有格式的前提下，实现复杂的修订、分析及自动化排版，是重型办公的首选。</p>
-                <div class="skill-footer"><span class="tag">Official</span></div>
-            </a>
-            <a href="https://github.com/anthropics/skills/tree/main/skills/pdf" target="_blank" class="skill-card">
-                <h3>PDF 工具箱</h3>
-                <p>精准提取文本与表格。支持元数据扫描及文档安全合并。</p>
-                <div class="skill-footer"><span class="tag">Office</span></div>
-            </a>
-            <a href="https://github.com/anthropics/skills/tree/main/skills/pptx" target="_blank" class="skill-card">
-                <h3>PPTX 生成器</h3>
-                <p>读取并重塑幻灯片。自动调整布局与母版样式。</p>
-                <div class="skill-footer"><span class="tag">Slide</span></div>
-            </a>
-            <a href="https://github.com/anthropics/skills/tree/main/skills/xlsx" target="_blank" class="skill-card">
-                <h3>Excel 大师</h3>
-                <p>注入智能公式与数据透视。将报表转化为决策资产。</p>
-                <div class="skill-footer"><span class="tag">Data</span></div>
-            </a>
-            <a href="https://github.com/smerchek/claude-epub-skill" target="_blank" class="skill-card">
-                <h3>Markdown 转 EPUB</h3>
-                <p>将笔记与对话转换成为专业 EPUB 电子书文件。</p>
-                <div class="skill-footer"><span class="tag">Ebook</span></div>
-            </a>
-        </div>
-
-        <!-- 开发与代码工具 -->
-        <div class="section-header" id="dev">
-            <div class="section-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="16 18 22 12 16 6" />
-                    <polyline points="8 6 2 12 8 18" />
-                </svg>
-            </div>
-            <h2>开发与代码工具</h2>
-            <p>从 Web UI 到 AWS 架构的全面加速方案。</p>
-        </div>
-        <div class="skills-grid">
-            <a href="https://github.com/anthropics/skills/tree/main/web-artifacts-builder" target="_blank"
-                class="skill-card">
-                <h3>Artifacts Builder <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2.5">
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg></h3>
-                <p>多组件 Web UI 编译器。实时生成 React + Tailwind 代码，支持即时热预览。</p>
-                <div class="skill-footer"><span class="tag">Frontend</span></div>
-            </a>
-            <a href="https://github.com/zxkane/aws-skills" target="_blank" class="skill-card">
-                <h3>AWS 云专家</h3>
-                <p>CDK 最佳实践、成本优化及 Serverless 架构设计。</p>
-                <div class="skill-footer"><span class="tag">Cloud</span></div>
-            </a>
-            <a href="./changelog-generator/" class="skill-card">
-                <h3>Changelog 生成器</h3>
-                <p>Git 日志分析引擎。将 Commit 转化为用户友好发布说明。</p>
-                <div class="skill-footer"><span class="tag">Git</span></div>
-            </a>
-            <a href="https://github.com/chrisvoncsefalvay/claude-d3js-skill" target="_blank" class="skill-card">
-                <h3>D3.js 可视化</h3>
-                <p>教 Claude 创作动态且交互性极强的数据图表。</p>
-                <div class="skill-footer"><span class="tag">Viz</span></div>
-            </a>
-            <a href="https://github.com/lackeyjb/playwright-skill" target="_blank" class="skill-card">
-                <h3>Playwright 自动化</h3>
-                <p>端到端浏览器测试。验证 UI 表现并采集动态网页数据。</p>
-                <div class="skill-footer"><span class="tag">Testing</span></div>
-            </a>
-            <a href="https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/sadd/skills/subagent-driven-development"
-                target="_blank" class="skill-card">
-                <h3>子代理驱动开发 (SADD) <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2.5">
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg></h3>
-                <p>分发、审查、合并。利用独立子代理并行处理复杂任务，并在每一轮中进行代码质量守卫。</p>
-                <div class="skill-footer"><span class="tag">Architecture</span></div>
-            </a>
-        </div>
-
-        <!-- 数据与分析 -->
-        <div class="section-header" id="data">
-            <div class="section-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="20" x2="18" y2="10" />
-                    <line x1="12" y1="20" x2="12" y2="4" />
-                    <line x1="6" y1="20" x2="6" y2="14" />
-                </svg>
-            </div>
-            <h2>数据与分析</h2>
-            <p>打破数据孤岛，实现自动化的深度观察与异常溯源。</p>
-        </div>
-        <div class="skills-grid">
-            <a href="https://github.com/coffeefuelbump/csv-data-summarizer-claude-skill" target="_blank"
-                class="skill-card">
-                <h3>CSV 数据汇总 <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2.5">
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg></h3>
-                <p>零指令摘要。直接识别 CSV 数据趋势并自动生成专业图表，无需手动编写提示词。</p>
-                <div class="skill-footer"><span class="tag">Summarizer</span></div>
-            </a>
-            <a href="https://github.com/sanjay3290/ai-skills/tree/main/skills/postgres" target="_blank"
-                class="skill-card">
-                <h3>Postgres 执行官</h3>
-                <p>读写分离策略下的只读 SQL 查询，确保数据驱动的安全性。</p>
-                <div class="skill-footer"><span class="tag">DB</span></div>
-            </a>
-            <a href="https://github.com/obra/superpowers/tree/main/skills/root-cause-tracing" target="_blank"
-                class="skill-card">
-                <h3>根因分析系统</h3>
-                <p>深度溯源隐蔽错误。在复杂执行链中锁定原始诱因。</p>
-                <div class="skill-footer"><span class="tag">Trace</span></div>
-            </a>
-        </div>
-
-        <!-- 商业与营销 -->
-        <div class="section-header" id="biz">
-            <div class="section-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-                </svg>
-            </div>
-            <h2>商业与营销</h2>
-            <p>品牌一致性与获客研究的智能化推进。</p>
-        </div>
-        <div class="skills-grid">
-            <a href="./brand-guidelines/" class="skill-card">
-                <h3>品牌视觉指南</h3>
-                <p>自动同步官方配色。确保每个 Artifact 都符合品牌规范。</p>
-                <div class="skill-footer"><span class="tag">Brand</span></div>
-            </a>
-            <a href="./competitive-ads-extractor/" class="skill-card">
-                <h3>广告库析取</h3>
-                <p>深度追踪竞品文案。分析广告逻辑与视觉转化模式。</p>
-                <div class="skill-footer"><span class="tag">Ads</span></div>
-            </a>
-            <a href="./domain-name-brainstormer/" class="skill-card">
-                <h3>域名脑暴中心</h3>
-                <p>一键域名创意。涵盖 .ai、.dev 等核心后缀可用性检测。</p>
-                <div class="skill-footer"><span class="tag">Domain</span></div>
-            </a>
-            <a href="./lead-research-assistant/" class="skill-card">
-                <h3>线索研究助手</h3>
-                <p>自动筛选潜在客户并产出定制化的接触策略。</p>
-                <div class="skill-footer"><span class="tag">Sales</span></div>
-            </a>
-        </div>
-
-        <!-- 沟通与写作 -->
-        <div class="section-header" id="writing">
-            <div class="section-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
-                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
-                </svg>
-            </div>
-            <h2>沟通与写作</h2>
-            <p>从会议深度洞察到跨文档知识网络构建。</p>
-        </div>
-        <div class="skills-grid">
-            <a href="https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/article-extractor"
-                target="_blank" class="skill-card">
-                <h3>全网文章提取</h3>
-                <p>精准识别网页正文及其元数据，剔除无用广告信息。</p>
-                <div class="skill-footer"><span class="tag">Reader</span></div>
-            </a>
-            <a href="./meeting-insights-analyzer/" class="skill-card">
-                <h3>会议深度洞察</h3>
-                <p>行为模式分析。识别会议发言比及潜在冲突节点。</p>
-                <div class="skill-footer"><span class="tag">Comms</span></div>
-            </a>
-            <a href="https://github.com/PleasePrompto/notebooklm-skill" target="_blank" class="skill-card">
-                <h3>NotebookLM 集成 <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2.5">
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg></h3>
-                <p>基于源文档的精准回答。让 Claude Code 直接对话 NotebookLM 数据库，获取经过校审的权威答案。</p>
-                <div class="skill-footer"><span class="tag">Integration</span></div>
-            </a>
-        </div>
-
-        <!-- 创意与媒体 -->
-        <div class="section-header" id="creative">
-            <div class="section-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 19l7-7 3 3-7 7-3-3z" />
-                    <path d="M18 13l-1.5-7.5L2 2l4.5 14.5L13 18l5-5z" />
-                    <path d="M2 2l5 5" />
-                </svg>
-            </div>
-            <h2>创意与媒体</h2>
-            <p>释放 AI 的视觉魔法，从 Canvas 设计到动效创作。</p>
-        </div>
-        <div class="skills-grid">
-            <a href="./canvas-design/" class="skill-card">
-                <h3>智能画布 <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2.5">
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg></h3>
-                <p>建立在美学原理上的生成引擎。在 PNG 格式中完成电影海报级别的视觉构图。</p>
-                <div class="skill-footer"><span class="tag">Static</span></div>
-            </a>
-            <a href="https://github.com/sanjay3290/ai-skills/tree/main/skills/imagen" target="_blank"
-                class="skill-card">
-                <h3>Imagen 全集成</h3>
-                <p>直接在对话中驱动 Google 的图像模型，生成高质量 UI 资产。</p>
-                <div class="skill-footer"><span class="tag">AI Art</span></div>
-            </a>
-            <a href="./slack-gif-creator/" class="skill-card">
-                <h3>GIF 创作中心</h3>
-                <p>针对 Slack 优化的动画工厂。严格限制尺寸并支持可组合动效。</p>
-                <div class="skill-footer"><span class="tag">Animation</span></div>
-            </a>
-            <a href="./video-downloader/" class="skill-card">
-                <h3>全网视频下载</h3>
-                <p>分析并获取各大平台的视频流，支持多格式无缝归档。</p>
-                <div class="skill-footer"><span class="tag">Video</span></div>
-            </a>
-        </div>
-
-        <!-- 生产力与组织 -->
-        <div class="section-header" id="prod">
-            <div class="section-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-                </svg>
-            </div>
-            <h2>生产力与组织</h2>
-            <p>基于精益哲学的数字化工作流持续改良。</p>
-        </div>
-        <div class="skills-grid">
-            <a href="./file-organizer/" class="skill-card">
-                <h3>AI 文件收纳</h3>
-                <p>语义识别目录。自动分类冗杂数据并建立系统化的知识库结构。</p>
-                <div class="skill-footer"><span class="tag">System</span></div>
-            </a>
-            <a href="https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/kaizen/skills/kaizen"
-                target="_blank" class="skill-card">
-                <h3>Kaizen 改良专家</h3>
-                <p>应用日本精益思想。在多个维度上周期性优化您的任务执行闭环。</p>
-                <div class="skill-footer"><span class="tag">Methodology</span></div>
-            </a>
-            <a href="./invoice-organizer/" class="skill-card">
-                <h3>税务助手</h3>
-                <p>发票信息高保真提取。针对年终报税实现自动化归档。</p>
-                <div class="skill-footer"><span class="tag">Tax</span></div>
-            </a>
-            <a href="https://github.com/haunchen/n8n-skills" target="_blank" class="skill-card">
-                <h3>n8n 自动化接管</h3>
-                <p>直接驱动 n8n 工作流面板，完成跨应用的逻辑编排。</p>
-                <div class="skill-footer"><span class="tag">Automate</span></div>
-            </a>
-        </div>
-
-        <!-- 协作与项目管理 -->
-        <div class="section-header" id="collab">
-            <div class="section-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                </svg>
-            </div>
-            <h2>协作与项目管理</h2>
-            <p>Git 操作自动化与代码实现评审。</p>
-        </div>
-        <div class="skills-grid">
-            <a href="https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/git-pushing"
-                target="_blank" class="skill-card">
-                <h3>Git 协作管家</h3>
-                <p>自动化代码提交、拉取与冲突预警机制。</p>
-                <div class="skill-footer"><span class="tag">Ops</span></div>
-            </a>
-            <a href="https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/review-implementing"
-                target="_blank" class="skill-card">
-                <h3>规格评审专家</h3>
-                <p>评估实施方案与需求规范的匹配度。拒绝无效开发。</p>
-                <div class="skill-footer"><span class="tag">Review</span></div>
-            </a>
-            <a href="https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/test-fixing"
-                target="_blank" class="skill-card">
-                <h3>补丁守护进程</h3>
-                <p>实时检测失败测试并给出修复补丁的修正方案。</p>
-                <div class="skill-footer"><span class="tag">Repair</span></div>
-            </a>
-        </div>
-
-        <!-- 安全与系统 -->
-        <div class="section-header" id="sec">
-            <div class="section-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg>
-            </div>
-            <h2>安全与系统</h2>
-            <p>面向未来的威胁猎寻与数字取证。</p>
-        </div>
-        <div class="skills-grid">
-            <a href="https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/computer-forensics"
-                target="_blank" class="skill-card">
-                <h3>数字取证专家</h3>
-                <p>高阶取证分析。在文件系统中通过模式匹配锁定攻击足迹。</p>
-                <div class="skill-footer"><span class="tag">Forensics</span></div>
-            </a>
-            <a href="https://github.com/jthack/threat-hunting-with-sigma-rules-skill" target="_blank"
-                class="skill-card">
-                <h3>Sigma 威胁猎寻 <svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2.5">
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg></h3>
-                <p>应用 Sigma 标准化检测规则，主动扫描系统日志捕获异常。让 Claude 成为您的全天候 SOC 分析师。</p>
-                <div class="skill-footer"><span class="tag">Threat Hunting</span></div>
-            </a>
-            <a href="https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion"
-                target="_blank" class="skill-card">
-                <h3>数据粉碎机</h3>
-                <p>工业级文件擦除协议，预防任何形式的数据恢复。</p>
-                <div class="skill-footer"><span class="tag">Security</span></div>
-            </a>
-        </div>
-
-        <!-- 使用指南 -->
-        <div class="section-header" id="guide">
-            <div class="section-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                    <polyline points="9 22 9 12 15 12 15 22" />
-                </svg>
-            </div>
-            <h2>快速开始指南</h2>
-            <p>通过 Obsidian Emerald 逻辑体系高效部署您的技能。</p>
-        </div>
-        <div class="guide-grid">
-            <div class="guide-card">
-                <h3>CLAUDE WEB</h3>
-                <div class="guide-step">
-                    <span class="step-num">01</span>
-                    <div><strong>打开实验面板</strong><span>定位至浏览器右下方 Marketplace (🧩) 按钮</span></div>
+            
+            <h3 id="doc-processing">📄 文档处理</h3>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h4>docx</h4>
+                    <p>创建、编辑、分析 Word 文档，支持修订追踪、评论和格式化。</p>
+                    <a href="https://github.com/anthropics/skills/tree/main/skills/docx">查看详情 →</a>
                 </div>
-                <div class="guide-step">
-                    <span class="step-num">02</span>
-                    <div><strong>检索与点击</strong><span>输入技能名，完成一键注入授权即可自动加载</span></div>
+                <div class="skill-card">
+                    <h4>pdf</h4>
+                    <p>提取文本、表格、元数据，合并和注释 PDF 文件。</p>
+                    <a href="https://github.com/anthropics/skills/tree/main/skills/pdf">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>pptx</h4>
+                    <p>读取、生成和调整幻灯片、布局、模板。</p>
+                    <a href="https://github.com/anthropics/skills/tree/main/skills/pptx">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>xlsx</h4>
+                    <p>电子表格操作：公式、图表、数据转换。</p>
+                    <a href="https://github.com/anthropics/skills/tree/main/skills/xlsx">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>Markdown 转 EPUB 转换器</h4>
+                    <p>将 Markdown 文档和聊天摘要转换为专业的 EPUB 电子书文件。</p>
+                    <a href="https://github.com/smerchek/claude-epub-skill">查看详情 →</a>
+                    <div class="author">作者: @smerchek</div>
                 </div>
             </div>
-            <div class="guide-card">
-                <h3>CLAUDE CODE</h3>
-                <div class="guide-step">
-                    <span class="step-num">01</span>
-                    <div><strong>协议部署</strong><span>将技能目录复制至 `~/.config/claude-code/skills/`</span></div>
+            
+            <h3 id="dev-tools">💻 开发与代码工具</h3>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h4>Artifacts 构建器</h4>
+                    <p>使用现代前端技术（React、Tailwind CSS、shadcn/ui）创建复杂的多组件 HTML artifacts。</p>
+                    <a href="https://github.com/anthropics/skills/tree/main/web-artifacts-builder">查看详情 →</a>
                 </div>
-                <div class="guide-step">
-                    <span class="step-num">02</span>
-                    <div><strong>启动加载</strong><span>运行 `claude` 即可触发全量技能的热加载机制</span></div>
+                <div class="skill-card">
+                    <h4>AWS 技能</h4>
+                    <p>AWS 开发，包括 CDK 最佳实践、成本优化 MCP 服务器和无服务器架构模式。</p>
+                    <a href="https://github.com/zxkane/aws-skills">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>更新日志生成器</h4>
+                    <p>从 git 提交自动创建面向用户的更新日志，将技术提交转换为客户友好的发布说明。</p>
+                    <a href="https://github.com/ComposioHQ/awesome-claude-skills/tree/master/changelog-generator">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>Claude Code 终端标题</h4>
+                    <p>为每个 Claude Code 终端窗口提供动态标题，描述正在执行的工作。</p>
+                    <a href="https://github.com/bluzername/claude-code-terminal-title">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>D3.js 可视化</h4>
+                    <p>教 Claude 生成 D3 图表和交互式数据可视化。</p>
+                    <a href="https://github.com/chrisvoncsefalvay/claude-d3js-skill">查看详情 →</a>
+                    <div class="author">作者: @chrisvoncsefalvay</div>
+                </div>
+                <div class="skill-card">
+                    <h4>FFUF Web 模糊测试</h4>
+                    <p>集成 ffuf Web 模糊测试工具，使 Claude 能够运行模糊测试任务并分析漏洞结果。</p>
+                    <a href="https://github.com/jthack/ffuf_claude_skill">查看详情 →</a>
+                    <div class="author">作者: @jthack</div>
+                </div>
+                <div class="skill-card">
+                    <h4>完成开发分支</h4>
+                    <p>通过提供清晰的选项和处理选定的工作流来指导完成开发工作。</p>
+                    <a href="https://github.com/obra/superpowers/tree/main/skills/finishing-a-development-branch">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>iOS 模拟器</h4>
+                    <p>使 Claude 能够与 iOS 模拟器交互，测试和调试 iOS 应用程序。</p>
+                    <a href="https://github.com/conorluddy/ios-simulator-skill">查看详情 →</a>
+                    <div class="author">作者: @conorluddy</div>
+                </div>
+                <div class="skill-card">
+                    <h4>MCP 构建器</h4>
+                    <p>指导创建高质量的 MCP（Model Context Protocol）服务器，将外部 API和服务与 LLM 集成。</p>
+                    <a href="https://github.com/ComposioHQ/awesome-claude-skills/tree/master/mcp-builder">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>Move 代码质量</h4>
+                    <p>根据官方 Move Book 代码质量清单分析 Move 语言包，确保 2024 年版合规和最佳实践。</p>
+                    <a href="https://github.com/1NickPappas/move-code-quality-skill">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>Playwright 浏览器自动化</h4>
+                    <p>用于测试和验证 Web 应用程序的模型调用 Playwright 自动化。</p>
+                    <a href="https://github.com/lackeyjb/playwright-skill">查看详情 →</a>
+                    <div class="author">作者: @lackeyjb</div>
+                </div>
+                <div class="skill-card">
+                    <h4>提示工程</h4>
+                    <p>教授著名的提示工程技术，包括 Anthropic 最佳实践和代理说服原则。</p>
+                    <a href="https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/customaize-agent/skills/prompt-engineering">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>PICT 测试用例设计</h4>
+                    <p>使用 PICT（成对独立组合测试）设计全面的测试用例，生成优化测试套件。</p>
+                    <a href="https://github.com/omkamal/pypict-claude-skill">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>技能创建器</h4>
+                    <p>提供创建有效 Claude Skills 的指导，扩展具有专业知识、工作流和工具集成的功能。</p>
+                    <a href="https://github.com/ComposioHQ/awesome-claude-skills/tree/master/skill-creator">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>技能搜索器</h4>
+                    <p>自动将任何文档网站转换为 Claude AI 技能。</p>
+                    <a href="https://github.com/yusufkaraaslan/Skill_Seekers">查看详情 →</a>
+                    <div class="author">作者: @yusufkaraaslan</div>
+                </div>
+                <div class="skill-card">
+                    <h4>软件架构</h4>
+                    <p>实现设计模式，包括 Clean Architecture、 SOLID 原则和全面的软件设计最佳实践。</p>
+                    <a href="https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/ddd/skills/software-architecture">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>子代理驱动开发</h4>
+                    <p>为单独任务分派独立的子代理，在迭代之间进行代码审查检查点。</p>
+                    <a href="https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/sadd/skills/subagent-driven-development">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>测试驱动开发</h4>
+                    <p>在实现任何功能或错误修复时使用，在编写实现代码之前。</p>
+                    <a href="https://github.com/obra/superpowers/tree/main/skills/test-driven-development">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>使用 Git Worktrees</h4>
+                    <p>创建隔离的 git worktrees，具有智能目录选择和安全验证。</p>
+                    <a href="https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>Web 应用测试</h4>
+                    <p>使用 Playwright 测试本地 Web 应用程序，验证前端功能、调试 UI 行为和截取屏幕截图。</p>
+                    <a href="https://github.com/ComposioHQ/awesome-claude-skills/tree/master/webapp-testing">查看详情 →</a>
                 </div>
             </div>
-        </div>
+            
+            <h3 id="data-analysis">📊 数据与分析</h3>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h4>CSV 数据摘要器</h4>
+                    <p>自动分析 CSV 文件并生成包含可视化的全面洞察，无需用户提示。</p>
+                    <a href="https://github.com/coffeefuelbump/csv-data-summarizer-claude-skill">查看详情 →</a>
+                    <div class="author">作者: @coffeefuelbump</div>
+                </div>
+                <div class="skill-card">
+                    <h4>PostgreSQL</h4>
+                    <p>针对 PostgreSQL 数据库执行安全的只读 SQL 查询，支持多连接和深度防御安全。</p>
+                    <a href="https://github.com/sanjay3290/ai-skills/tree/main/skills/postgres">查看详情 →</a>
+                    <div class="author">作者: @sanjay3290</div>
+                </div>
+                <div class="skill-card">
+                    <h4>根本原因追踪</h4>
+                    <p>当错误发生在执行深处时使用，需要回溯找到原始触发点。</p>
+                    <a href="https://github.com/obra/superpowers/tree/main/skills/root-cause-tracing">查看详情 →</a>
+                </div>
+            </div>
+            
+            <h3 id="business">💼 商业与营销</h3>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h4>品牌指南</h4>
+                    <p>应用 Anthropic 官方品牌颜色和排版到 artifacts，确保一致的视觉身份和专业设计标准。</p>
+                    <a href="https://github.com/ComposioHQ/awesome-claude-skills/tree/master/brand-guidelines">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>竞品广告提取器</h4>
+                    <p>从广告库中提取和分析竞争对手的广告，了解能引起共鸣的信息和创意方法。</p>
+                    <a href="https://github.com/ComposioHQ/awesome-claude-skills/tree/master/competitive-ads-extractor">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>域名头脑风暴</h4>
+                    <p>生成创意的域名创意，并检查多个 TLD 的可用性，包括 .com、.io、.dev 和 .ai 后缀。</p>
+                    <a href="https://github.com/ComposioHQ/awesome-claude-skills/tree/master/domain-name-brainstormer">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>内部沟通</h4>
+                    <p>帮助撰写内部沟通，包括 3P 更新、公司通讯、常见问题、状态报告和项目更新。</p>
+                    <a href="https://github.com/ComposioHQ/awesome-claude-skills/tree/master/internal-comms">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>潜在客户研究助手</h4>
+                    <p>通过分析您的产品、搜索目标公司并提供可操作的 outreach 策略来识别和筛选高质量潜在客户。</p>
+                    <a href="https://github.com/ComposioHQ/awesome-claude-skills/tree/master/lead-research-assistant">查看详情 →</a>
+                </div>
+            </div>
+            
+            <h3 id="communication">✍️ 沟通与写作</h3>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h4>文章提取器</h4>
+                    <p>从网页中提取完整的文章文本和元数据。</p>
+                    <a href="https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/article-extractor">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>头脑风暴</h4>
+                    <p>通过结构化提问和替代方案探索，将粗糙的想法转化为完善的设计。</p>
+                    <a href="https://github.com/obra/superpowers/tree/main/skills/brainstorming">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>内容研究写作</h4>
+                    <p>通过研究、添加引用、改进开头和提供逐节反馈来帮助编写高质量内容。</p>
+                    <a href="https://github.com/ComposioHQ/awesome-claude-skills/tree/master/content-research-writer">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>家族史研究</h4>
+                    <p>协助规划家族史和家谱研究项目。</p>
+                    <a href="https://github.com/emaynard/claude-family-history-research-skill">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>会议洞察分析器</h4>
+                    <p>分析会议记录以发现行为模式，包括冲突回避、发言比例、填充词和领导风格。</p>
+                    <a href="https://github.com/ComposioHQ/awesome-claude-skills/tree/master/meeting-insights-analyzer">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>NotebookLM 集成</h4>
+                    <p>让 Claude Code 直接与 NotebookLM 聊天，基于上传的文档提供有依据的答案。</p>
+                    <a href="https://github.com/PleasePrompto/notebooklm-skill">查看详情 →</a>
+                    <div class="author">作者: @PleasePrompto</div>
+                </div>
+            </div>
+            
+            <h3 id="creative">🎨 创意与媒体</h3>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h4>画布设计</h4>
+                    <p>使用设计理念和美学原则在 PNG 和 PDF 文档中创建美丽的视觉艺术、海报、设计和静态作品。</p>
+                    <a href="https://github.com/ComposioHQ/awesome-claude-skills/tree/master/canvas-design">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>Imagen</h4>
+                    <p>使用 Google Gemini 的图像生成 API 生成图像，用于 UI 模型、图标、插图和视觉资产。</p>
+                    <a href="https://github.com/sanjay3290/ai-skills/tree/main/skills/imagen">查看详情 →</a>
+                    <div class="author">作者: @sanjay3290</div>
+                </div>
+                <div class="skill-card">
+                    <h4>图像增强器</h4>
+                    <p>通过增强分辨率、锐度和清晰度来提高图像和屏幕截图的质量。</p>
+                    <a href="https://github.com/ComposioHQ/awesome-claude-skills/tree/master/image-enhancer">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>Slack GIF 创建器</h4>
+                    <p>创建针对 Slack 优化的动画 GIF，包含大小约束验证器和可组合动画原语。</p>
+                    <a href="https://github.com/ComposioHQ/awesome-claude-skills/tree/master/slack-gif-creator">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>主题工厂</h4>
+                    <p>将专业字体和颜色主题应用到 artifacts，包括幻灯片、文档、报告和 HTML 登录页面。</p>
+                    <a href="https://github.com/ComposioHQ/awesome-claude-skills/tree/master/theme-factory">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>视频下载器</h4>
+                    <p>从 YouTube 和其他平台下载视频以供离线观看、编辑或归档。</p>
+                    <a href="https://github.com/ComposioHQ/awesome-claude-skills/tree/master/video-downloader">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>YouTube 字幕</h4>
+                    <p>从 YouTube 视频获取字幕并准备摘要。</p>
+                    <a href="https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/youtube-transcript">查看详情 →</a>
+                </div>
+            </div>
+            
+            <h3 id="productivity">⚡ 生产力与组织</h3>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h4>文件整理器</h4>
+                    <p>通过理解上下文、查找重复项和建议更好的组织结构来智能整理文件和文件夹。</p>
+                    <a href="https://github.com/ComposioHQ/awesome-claude-skills/tree/master/file-organizer">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>发票整理器</h4>
+                    <p>通过读取文件、提取信息并一致重命名来自动整理发票和收据以进行税务准备。</p>
+                    <a href="https://github.com/ComposioHQ/awesome-claude-skills/tree/master/invoice-organizer">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>改善（Kaizen）</h4>
+                    <p>应用持续改进方法论，基于日本 Kaizen 哲学和精益方法论。</p>
+                    <a href="https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/kaizen/skills/kaizen">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>n8n 技能</h4>
+                    <p>使 AI 助手能够直接理解和操作 n8n 工作流。</p>
+                    <a href="https://github.com/haunchen/n8n-skills">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>抽奖获胜者选择器</h4>
+                    <p>从列表、电子表格或 Google 表格中随机选择获奖者，适用于赠品和竞赛。</p>
+                    <a href="https://github.com/ComposioHQ/awesome-claude-skills/tree/master/raffle-winner-picker">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>Ship Learn Next</h4>
+                    <p>基于反馈循环帮助迭代下一步要构建或学习的内容。</p>
+                    <a href="https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/ship-learn-next">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>Tapestry</h4>
+                    <p>将相关文档互连并总结成知识网络。</p>
+                    <a href="https://github.com/michalparkola/tapestry-skills-for-claude-code/tree/main/tapestry">查看详情 →</a>
+                </div>
+            </div>
+            
+            <h3 id="collaboration">👥 协作与项目管理</h3>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h4>Git 推送</h4>
+                    <p>自动化 git 操作和仓库交互。</p>
+                    <a href="https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/git-pushing">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>审查实施</h4>
+                    <p>评估代码实施计划并与规范保持一致。</p>
+                    <a href="https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/review-implementing">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>测试修复</h4>
+                    <p>检测失败的测试并提出补丁或修复方案。</p>
+                    <a href="https://github.com/mhattingpete/claude-skills-marketplace/tree/main/engineering-workflow-plugin/skills/test-fixing">查看详情 →</a>
+                </div>
+            </div>
+            
+            <h3 id="security">🔒 安全与系统</h3>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h4>计算机取证</h4>
+                    <p>数字取证分析和调查技术。</p>
+                    <a href="https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/computer-forensics">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>文件删除</h4>
+                    <p>安全文件删除和数据清理方法。</p>
+                    <a href="https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/file-deletion">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>元数据提取</h4>
+                    <p>提取和分析文件元数据以进行取证目的。</p>
+                    <a href="https://github.com/mhattingpete/claude-skills-marketplace/tree/main/computer-forensics-skills/skills/metadata-extraction">查看详情 →</a>
+                </div>
+                <div class="skill-card">
+                    <h4>使用 Sigma 规则进行威胁狩猎</h4>
+                    <p>使用 Sigma 检测规则来狩猎威胁和分析安全事件。</p>
+                    <a href="https://github.com/jthack/threat-hunting-with-sigma-rules-skill">查看详情 →</a>
+                </div>
+            </div>
+        </section>
+        
+        <section id="getting-started" class="section">
+            <h2>🚀 开始使用</h2>
+            
+            <h3>在 Claude.ai 中使用 Skills</h3>
+            <ol>
+                <li>点击聊天界面中的技能图标（🧩）</li>
+                <li>从市场添加技能或上传自定义技能</li>
+                <li>Claude 根据您的任务自动激活相关技能</li>
+            </ol>
+            
+            <h3>在 Claude Code 中使用 Skills</h3>
+            <ol>
+                <li>将技能放置在 <code>~/.config/claude-code/skills/</code> 目录：</li>
+            </ol>
+            <pre><code>mkdir -p ~/.config/claude-code/skills/
+cp -r skill-name ~/.config/claude-code/skills/</code></pre>
+            
+            <ol start="2">
+                <li>验证技能元数据：</li>
+            </ol>
+            <pre><code>head ~/.config/claude-code/skills/skill-name/SKILL.md</code></pre>
+            
+            <ol start="3">
+                <li>启动 Claude Code：</li>
+            </ol>
+            <pre><code>claude</code></pre>
+            
+            <ol start="4">
+                <li>技能会自动加载并在相关时激活</li>
+            </ol>
+            
+            <h3>通过 API 使用 Skills</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 15px;">使用 Claude Skills API 以编程方式加载和管理技能：</p>
+            <pre><code>import anthropic
+
+client = anthropic.Anthropic(api_key="your-api-key")
+
+response = client.messages.create(
+    model="claude-3-5-sonnet-20241022",
+    skills=["skill-id-here"],
+    messages=[{"role": "user", "content": "Your prompt"}]
+)</code></pre>
+        </section>
+        
+        <section id="create" class="section">
+            <h2>🛠️ 创建 Skills</h2>
+            
+            <h3>技能结构</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 15px;">每个技能都是一个包含 <code>SKILL.md</code> 文件的文件夹，YAML 前置元数据：</p>
+            <pre><code>skill-name/
+├── SKILL.md          # 必需：技能说明和元数据
+├── scripts/          # 可选：辅助脚本
+├── templates/        # 可选：文档模板
+└── resources/        # 可选：参考文件</code></pre>
+            
+            <h3>基本技能模板</h3>
+            <pre><code>---
+name: my-skill-name
+description: 清晰描述此技能的功能和使用时机。
+---
+
+# 我的技能名称
+
+技能目的和功能的详细描述。
+
+## 何时使用此技能
+
+- 使用场景 1
+- 使用场景 2
+- 使用场景 3
+
+## 说明
+
+Claude 如何执行此技能的详细说明。
+
+## 示例
+
+展示技能实际应用的真实示例。</code></pre>
+            
+            <h3>技能最佳实践</h3>
+            <ul>
+                <li>专注于具体的、可重复的任务</li>
+                <li>包含清晰的示例和边缘情况</li>
+                <li>为 Claude 编写说明，而非最终用户</li>
+                <li>跨 Claude.ai、Claude Code 和 API 进行测试</li>
+                <li>记录先决条件和依赖项</li>
+                <li>包含错误处理指导</li>
+            </ul>
+        </section>
+        
+        <section id="resources" class="section">
+            <h2>📖 资源</h2>
+            
+            <h3>官方文档</h3>
+            <ul>
+                <li><a href="https://www.anthropic.com/news/skills">Claude Skills 概述</a> - 官方公告和功能</li>
+                <li><a href="https://support.claude.com/en/articles/12512180-using-skills-in-claude">技能用户指南</a> - 如何在 Claude 中使用技能</li>
+                <li><a href="https://support.claude.com/en/articles/12512198-creating-custom-skills">创建自定义技能</a> - 技能开发指南</li>
+                <li><a href="https://docs.claude.com/en/api/skills-guide">Skills API 文档</a> - API 集成指南</li>
+                <li><a href="https://anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills">代理技能博文</a> - 工程深度解析</li>
+            </ul>
+            
+            <h3>社区资源</h3>
+            <ul>
+                <li><a href="https://github.com/anthropics/skills">Anthropic Skills 仓库</a> - 官方示例技能</li>
+                <li><a href="https://community.anthropic.com">Claude 社区</a> - 与其他用户讨论技能</li>
+                <li><a href="https://claude.ai/marketplace">技能市场</a> - 发现和分享技能</li>
+            </ul>
+            
+            <h3>灵感与用例</h3>
+            <ul>
+                <li><a href="https://www.lennysnewsletter.com/p/everyone-should-be-using-claude-code">Lenny 的通讯</a> - 人们使用 Claude Code 的 50 种方式</li>
+                <li><a href="https://www.notion.so/notiondevs/Notion-Skills-for-Claude-28da4445d27180c7af1df7d8615723d0">Notion 技能</a> - Claude 的 Notion 集成技能</li>
+            </ul>
+        </section>
+        
+        <section class="section">
+            <h2>🤝 贡献</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 15px;">我们欢迎贡献！请阅读我们的贡献指南了解详情：</p>
+            <ul>
+                <li>如何提交新技能</li>
+                <li>技能质量标准</li>
+                <li>拉取请求流程</li>
+                <li>行为准则</li>
+            </ul>
+            
+            <h3>快速贡献步骤</h3>
+            <ol>
+                <li>确保您的技能基于实际用例</li>
+                <li>检查现有技能中的重复项</li>
+                <li>遵循技能结构模板</li>
+                <li>跨平台测试您的技能</li>
+                <li>提交带有清晰文档的拉取请求</li>
+            </ol>
+        </section>
     </main>
-
+    
     <footer>
-        <p>© 2026 CLAUDE SKILLS DIRECTORY</p>
-        <div class="footer-links">
-            <a href="https://github.com/ComposioHQ/awesome-claude-skills" target="_blank">GITHUB REPOSITORY</a>
+        <div class="container">
+            <p>基于 <a href="https://github.com/ComposioHQ/awesome-claude-skills">awesome-claude-skills</a> 的中文翻译版本</p>
+            <p>原始项目由 <a href="https://github.com/ComposioHQ">ComposioHQ</a> 维护 | Apache License 2.0</p>
+            <p style="margin-top: 20px; color: var(--text-muted);">
+                <a href="https://calendly.com/thomas-composio/composio-enterprise-setup">预约演示</a> · 
+                <a href="https://x.com/composio">关注 X</a> · 
+                <a href="https://discord.com/invite/composio">加入 Discord</a>
+            </p>
         </div>
     </footer>
-
-    <button id="backToTop" title="Top">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-            stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="18 15 12 9 6 15" />
-        </svg>
-    </button>
-
-    <script src="index.js"></script>
 </body>
-
 </html>
