@@ -110,6 +110,8 @@ Claude 技能（Claude Skills）是可定制的工作流，它们教会 Claude �
 - [域名脑暴器](https://github.com/ComposioHQ/awesome-claude-skills/tree/master/domain-name-brainstormer/) - 产生创意域名并检查 .com, .io, .dev, .ai 等后缀的可用性。
 - [内部沟通协助 (Internal Comms)](https://github.com/ComposioHQ/awesome-claude-skills/tree/master/internal-comms/) - 帮助编写内部通知、简报、FAQs 和项目状态报告。
 - [潜在客户研究助手](https://github.com/ComposioHQ/awesome-claude-skills/tree/master/lead-research-assistant/) - 通过分析产品与搜索目标公司，识别并评估高质量的潜在客户。
+- [toprank](https://github.com/nowork-studio/toprank) - 开源（MIT）的 Claude Code SEO 与 Google Ads 技能套件，整合 Google Search Console、PageSpeed Insights 和 Google Ads API，可直接在 Claude Code 中执行 SEO 分析、关键字优化和广告管理。
+
 
 ### 沟通与写作
 
