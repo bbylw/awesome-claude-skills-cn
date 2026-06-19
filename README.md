@@ -109,6 +109,7 @@ Claude 技能（Claude Skills）是可定制的工作流，它们教会 Claude �
 - [竞品广告提取器](https://github.com/ComposioHQ/awesome-claude-skills/tree/master/competitive-ads-extractor/) - 从广告库中提取并分析竞品广告，了解产生共鸣的营销策略。
 - [域名脑暴器](https://github.com/ComposioHQ/awesome-claude-skills/tree/master/domain-name-brainstormer/) - 产生创意域名并检查 .com, .io, .dev, .ai 等后缀的可用性。
 - [内部沟通协助 (Internal Comms)](https://github.com/ComposioHQ/awesome-claude-skills/tree/master/internal-comms/) - 帮助编写内部通知、简报、FAQs 和项目状态报告。
+- [NotFair](https://github.com/nowork-studio/NotFair) - 面向 SEO、GEO、Google Ads 与 Meta Ads 的开源 Claude Code 技能集，通过 Google Ads MCP、Meta Ads MCP、Google Search Console MCP 和 Google Analytics (GA4) MCP 接入实时数据，涵盖关键词研究、元标签优化、Schema 标记生成、搜索词清理、出价管理及创意疲劳诊断等功能。
 - [潜在客户研究助手](https://github.com/ComposioHQ/awesome-claude-skills/tree/master/lead-research-assistant/) - 通过分析产品与搜索目标公司，识别并评估高质量的潜在客户。
 
 ### 沟通与写作
