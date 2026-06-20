@@ -78,6 +78,7 @@ Claude 技能（Claude Skills）是可定制的工作流，它们教会 Claude �
 
 - [artifacts-builder](https://github.com/anthropics/skills/tree/master/web-artifacts-builder) - 用于在 claude.ai 中使用现代前端技术（React, Tailwind CSS, shadcn/ui）创建精美、多组件 HTML artifacts 的工具套件。
 - [aws-skills](https://github.com/zxkane/aws-skills) - AWS 开发工具，包含 CDK 最佳实践、成本优化方案以及 Serverless/事件驱动架构模式。
+- [ax-extract-workflow](https://github.com/Necmttn/ax/tree/main/skills/ax-extract-workflow) - 从 Claude Code、Codex 等会话记录中还原一次任务的实际工作流，用于复盘成功路径和提炼可复用步骤。*作者：[@Necmttn](https://github.com/Necmttn)*
 - [更新日志生成器 (Changelog Generator)](https://github.com/ComposioHQ/awesome-claude-skills/tree/master/changelog-generator/) - 通过分析 Git 历史记录，自动将技术性的提交信息转化为面向用户的友好产品发布说明。
 - [Claude Code 终端标题](https://github.com/bluzername/claude-code-terminal-title) - 为每个 Claude-Code 终端窗口赋予动态标题，描述当前工作内容，避免窗口混淆。
 - [D3.js 数据可视化](https://github.com/chrisvoncsefalvay/claude-d3js-skill) - 教会 Claude 产生 D3 图表和交互式数据可视化作品。*作者：[@chrisvoncsefalvay](https://github.com/chrisvoncsefalvay)*
