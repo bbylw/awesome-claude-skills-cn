@@ -68,15 +68,15 @@ Claude 技能（Claude Skills）是可定制的工作流，它们教会 Claude �
 
 ### 文档处理
 
-- [docx](https://github.com/anthropics/skills/tree/master/skills/docx) - 创建、编辑、分析 Word 文档，支持修订、批注和复杂格式。
-- [pdf](https://github.com/anthropics/skills/tree/master/skills/pdf) - 提取文本、表格、元数据，并支持合并与标记 PDF。
-- [pptx](https://github.com/anthropics/skills/tree/master/skills/pptx) - 读取、生成并调整幻灯片布局及模板。
-- [xlsx](https://github.com/anthropics/skills/tree/master/skills/xlsx) - 电子表格操作：公式、图表、数据转换。
+- [docx](https://github.com/anthropics/skills/tree/main/skills/docx) - 创建、编辑、分析 Word 文档，支持修订、批注和复杂格式。
+- [pdf](https://github.com/anthropics/skills/tree/main/skills/pdf) - 提取文本、表格、元数据，并支持合并与标记 PDF。
+- [pptx](https://github.com/anthropics/skills/tree/main/skills/pptx) - 读取、生成并调整幻灯片布局及模板。
+- [xlsx](https://github.com/anthropics/skills/tree/main/skills/xlsx) - 电子表格操作：公式、图表、数据转换。
 - [Markdown 转 EPUB 转换器](https://github.com/smerchek/claude-epub-skill) - 将 Markdown 文档和聊天摘要转换为专业的 EPUB 电子书文件。*作者：[@smerchek](https://github.com/smerchek)*
 
 ### 开发与代码工具
 
-- [artifacts-builder](https://github.com/anthropics/skills/tree/master/web-artifacts-builder) - 用于在 claude.ai 中使用现代前端技术（React, Tailwind CSS, shadcn/ui）创建精美、多组件 HTML artifacts 的工具套件。
+- [artifacts-builder](https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder) - 用于在 claude.ai 中使用现代前端技术（React, Tailwind CSS, shadcn/ui）创建精美、多组件 HTML artifacts 的工具套件。
 - [aws-skills](https://github.com/zxkane/aws-skills) - AWS 开发工具，包含 CDK 最佳实践、成本优化方案以及 Serverless/事件驱动架构模式。
 - [更新日志生成器 (Changelog Generator)](https://github.com/ComposioHQ/awesome-claude-skills/tree/master/changelog-generator/) - 通过分析 Git 历史记录，自动将技术性的提交信息转化为面向用户的友好产品发布说明。
 - [Claude Code 终端标题](https://github.com/bluzername/claude-code-terminal-title) - 为每个 Claude-Code 终端窗口赋予动态标题，描述当前工作内容，避免窗口混淆。
@@ -94,7 +94,7 @@ Claude 技能（Claude Skills）是可定制的工作流，它们教会 Claude �
 - [软件架构](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/ddd/skills/software-architecture) - 实现包含 Clean Architecture、SOLID 原则在内的软件设计模式。
 - [子代理驱动开发 (SADD)](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/sadd/skills/subagent-driven-development) - 派发独立子代理处理任务，在迭代间进行代码审查 checkpoint。
 - [测试驱动开发 (TDD)](https://github.com/obra/superpowers/tree/master/skills/test-driven-development) - 在编写实现代码前，先用于实现功能或修复 Bug 的技能。
-- [使用 Git Worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - 创建孤立的 Git worktrees，带有智能目录选择与安全验证。
+- [使用 Git Worktrees](https://github.com/obra/superpowers/tree/main/skills/using-git-worktrees) - 创建孤立的 Git worktrees，带有智能目录选择与安全验证。
 - [Webapp 测试](https://github.com/ComposioHQ/awesome-claude-skills/tree/master/webapp-testing/) - 使用 Playwright 测试本地 Web 应用，验证前端功能并捕捉截图。
 
 ### 数据与分析
@@ -102,6 +102,7 @@ Claude 技能（Claude Skills）是可定制的工作流，它们教会 Claude �
 - [CSV 数据汇总器](https://github.com/coffeefuelbump/csv-data-summarizer-claude-skill) - 自动分析 CSV 文件并生成见解与可视化，无需用户提示词。*作者：[@coffeefuelbump](https://github.com/coffeefuelbump)*
 - [postgres](https://github.com/sanjay3290/ai-skills/tree/master/skills/postgres) - 对 PostgreSQL 数据库执行安全的只读 SQL 查询，支持多连接管理。*作者：[@sanjay3290](https://github.com/sanjay3290)*
 - [根因追踪 (root-cause-tracing)](https://github.com/obra/superpowers/tree/master/skills/root-cause-tracing) - 当错误发生在深层执行环节时，用于回溯寻找原始触发点。
+- [x-twitter-scraper](https://github.com/Xquik-dev/x-twitter-scraper) - 使用 Xquik API 搜索推文、查询用户及时间线、导出数据，支持监控、Webhook 与 MCP/SDK 集成。*作者：[@Xquik-dev](https://github.com/Xquik-dev)*
 
 ### 商业与营销
 
@@ -309,10 +310,12 @@ description: 简明扼要地描述此技能的作用及使用时机。
 
 本项目基于 Apache License 2.0 许可证。
 
-各独立技能可能拥有不同的许可证 —— 请检查各技能文件夹中的许可信息。
+各独立技能可能拥有不同的许可证 - 请检查各技能文件夹中的许可信息。
 
 ---
 
 **注**：Claude 技能可运行于 Claude.ai, Claude Code 以及 Claude API。一旦创建，技能可在所有平台间无缝移植。
 
 - [AgentsKB](https://agentskb.com) - 经过研究验证的 AI 增强平台。
+
+Xquik is an independent third-party service. Not affiliated with X Corp. "Twitter" and "X" are trademarks of X Corp.
