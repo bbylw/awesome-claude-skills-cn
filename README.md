@@ -94,8 +94,8 @@ Claude 技能（Claude Skills）是可定制的工作流，它们教会 Claude �
 - [软件架构](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/ddd/skills/software-architecture) - 实现包含 Clean Architecture、SOLID 原则在内的软件设计模式。
 - [子代理驱动开发 (SADD)](https://github.com/NeoLabHQ/context-engineering-kit/tree/master/plugins/sadd/skills/subagent-driven-development) - 派发独立子代理处理任务，在迭代间进行代码审查 checkpoint。
 - [测试驱动开发 (TDD)](https://github.com/obra/superpowers/tree/master/skills/test-driven-development) - 在编写实现代码前，先用于实现功能或修复 Bug 的技能。
-- [使用 Git Worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - 创建孤立的 Git worktrees，带有智能目录选择与安全验证。
 - [Tree Ring Memory](https://github.com/TerminallyLazy/tree-ring-memory-skill) - 本地优先的 agent 记忆生命周期技能，指导 Claude 进行项目记忆召回、证据记录、审计、遗忘与合并。*作者：[@TerminallyLazy](https://github.com/TerminallyLazy)*
+- [使用 Git Worktrees](https://github.com/obra/superpowers/blob/main/skills/using-git-worktrees/) - 创建孤立的 Git worktrees，带有智能目录选择与安全验证。
 - [Webapp 测试](https://github.com/ComposioHQ/awesome-claude-skills/tree/master/webapp-testing/) - 使用 Playwright 测试本地 Web 应用，验证前端功能并捕捉截图。
 
 ### 数据与分析
