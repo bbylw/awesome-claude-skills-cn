@@ -316,3 +316,4 @@ description: 简明扼要地描述此技能的作用及使用时机。
 **注**：Claude 技能可运行于 Claude.ai, Claude Code 以及 Claude API。一旦创建，技能可在所有平台间无缝移植。
 
 - [AgentsKB](https://agentskb.com) - 经过研究验证的 AI 增强平台。
+- [mblode/agent-skills](https://github.com/mblode/agent-skills) - Nobody ships AI slop on purpose. These skills make sure you don't. UI audits, typography, docs, PR review, and releases. `npx skills add mblode/agent-skills`
